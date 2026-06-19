@@ -113,17 +113,14 @@ class VideoDownloader:
     def _download_sync(self, url: str, format_id: str) -> tuple[str, int]:
         output_template = os.path.join(self.download_dir, '%(id)s_%(height)s.%(ext)s')
 
-        ydl_opts = {
-            'format': f'{format_id}+bestaudio[ext=m4a]/{format_id}/best',
-            'outtmpl': output_template,
-            'quiet': True,
-            'no_warnings': True,
-            'merge_output_format': 'mp4',
-            'postprocessors': [{
-                'key': 'FFmpegVideoConvertor',
-                'preferedformat': 'mp4',
-                 'cookiefile': 'cookies.txt',
-            }],
+       ydl_opts = {
+    'format': 'bv*+ba/best',
+    'cookiefile': 'cookies.txt',
+    'outtmpl': output_template,
+    'quiet': True,
+    'no_warnings': True,
+    'merge_output_format': 'mp4',
+}],
         }
 
         try:
