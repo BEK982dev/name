@@ -39,6 +39,7 @@ class VideoDownloader:
             'quiet': True,
             'no_warnings': True,
             'skip_download': True,
+            'cookiefile': 'cookies.txt',
         }
 
         try:
@@ -121,6 +122,7 @@ class VideoDownloader:
             'postprocessors': [{
                 'key': 'FFmpegVideoConvertor',
                 'preferedformat': 'mp4',
+                 'cookiefile': 'cookies.txt',
             }],
         }
 
